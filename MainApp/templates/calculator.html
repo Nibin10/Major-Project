@@ -1,0 +1,74 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <link rel="stylesheet" href={% static "calc/style.css" %}>
+
+</head>
+<body onmousedown="SendPostRequestOptions(event)">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+function SendPostRequestOptions(event){
+    $.ajax({
+    url: "{% url 'calculator' %}",
+    method: 'POST',
+    data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+    success: function (data) {
+      if(data.result == 'home'){
+          window.location = "{% url 'home' %}";
+      }
+      else if(data.result == 'calculator'){
+        window.location = "{% url 'calculator' %}";
+    }
+      
+
+    }
+});
+}</script>
+<script>
+  $(document).ready(function() {
+    setInterval(function() {
+      $("#here").load("{% url 'calculator' %} #here");
+    }, 5000);
+  });
+</script>
+{% csrf_token %}
+<!-- partial:index.partial.html -->
+<div class="container" id="here">
+      <form action="" name="calc" class="calculator">
+        <input type="text" class="value"  name="txt"  value="{{result}}"/>
+        <span class="num clear" ><i>C</i></span>
+        <span class="num" ><i>/</i></span>
+        <span class="num" ><i>*</i></span>
+        <span class="num" ><i>7</i></span>
+        <span class="num" ><i>8</i></span>
+        <span class="num"><i>9</i></span>
+        <span class="num" ><i>-</i></span>
+        <span class="num" ><i>4</i></span>
+        <span class="num" ><i>5</i></span>
+        <span class="num" ><i>6</i></span>
+        <span class="num plus" ><i>+</i></span>
+        <span class="num" ><i>1</i></span>
+        <span class="num" ><i>2</i></span>
+        <span class="num" ><i>3</i></span>
+        <span class="num" ><i>0</i></span>
+        <span class="num" ><i>00</i></span>
+        <span class="num" ><i>.</i></span>
+
+        <span
+          class="num equal"
+          ><i>=</i></span
+        >
+      </form>
+    </div>
+<!-- partial -->
+  <script  src={% static "calc/script.js" %}></script>
+  <audio autoplay  id="myVideo">
+    <source src="/static/images/common.mp3" type="audio/mp3">
+  </audio>
+</body>
+</html>

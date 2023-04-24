@@ -1,0 +1,588 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Login</title>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Login</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href={% static "hp/css/bootstrap.min.css" %}>
+      <!-- style css -->
+      <link rel="stylesheet" href={% static "hp/css/style.css" %}>
+      <!-- Responsive-->
+      <link rel="stylesheet" href={% static "hp/css/responsive.css" %}>
+      <!-- fevicon -->
+      <link rel="icon" href={% static "hp/images/fevicon.png" %} type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href={% static "hp/css/jquery.mCustomScrollbar.min.css" %}>
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout"  onclick="ClickLink()"  >
+
+      <audio autoplay  id="myVideo">
+         <source src="/static/images/voice.mp3" type="audio/mp3">
+       </audio>
+
+
+      <script>
+         function ClickLink()
+         {
+             document.getElementById('lnk').click();
+         }
+     </script>
+
+
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src={% static "hp/images/loading.gif" %} alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <div id="mySidepanel" class="sidepanel">
+         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+         <a href="index.html">Home</a>
+         <a href="#about">About</a>
+         <a href="#we_Do">We Do</a>
+         <a href="#team">Our Team</a>
+         <a href="#Find">Contact Us</a>
+         <a id="lnk" href="{% url 'social:begin' 'google-oauth2' %}">Login</a>
+      </div>
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                     <div class="sea_icon d_none ">
+                        <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <!--<div class="logo">
+                              <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                           </div>
+                           -->
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                     <div class="right_bottun">
+                        <button class="openbtn" onclick="openNav()"><img src={% static "hp/images/menu_icon.png" %} alt="#"/> </button> 
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+      <!-- banner -->
+      <section class="banner_main">
+         <div id="banner1" class="carousel slide" data-ride="carousel">
+            <!--<ol class="carousel-indicators">
+               <li data-target="#banner1" data-slide-to="0" class="active"></li>
+               <li data-target="#banner1" data-slide-to="1"></li>
+               <li data-target="#banner1" data-slide-to="2"></li>
+            </ol>-->
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="text-bg">
+                           <img src={% static "hp/images/soniaa.png" %} alt="#" />
+                           <!--<h1 style="filter: blur(4px);">SONIA</h1>
+                           <span>BLINDAPP</span>
+                           
+                           <a class="read_more" href="#">About Us</a>
+                           <ul class="social_team">
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                           </ul>-->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!--<div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="text-bg">
+                           <h1>software</h1>
+                           <span>Maker</span>
+                           <a class="read_more" href="#">About Us</a>
+                           <ul class="social_team">
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="carousel-item">
+                  <div class="container">
+                     <div class="carousel-caption">
+                        <div class="text-bg">
+                           <h1>software</h1>
+                           <span>Maker</span>
+                           <a class="read_more" href="#">About Us</a>
+                           <ul class="social_team">
+                              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+               </div>-->
+            </div>
+            <!--<a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+            <a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>-->
+         </div>
+      </section>
+      <!-- end banner -->
+      <!-- about section -->
+      <div id="about" class="about">
+         <div class="container">
+            <div class="row ">
+               <div class="col-md-5">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="titlepage">
+                           <h2>About</h2>
+                           <p align="justify">Sonia is an application made available for the blind and visually impaired people. Sonia allows the user to use email service verbally. The user can compose as well as read mail using verbal communication. This application also provides  a verbal ebook function, where the user can listen to audio of the respective books selected. Sonia's verbal calculator makes it easy for the user to calculate in Malayalam. Other applications such as a search engine,alert message is also made available by Sonia.</p>
+                        </div>
+                     </div>
+                     <div class="col-md-12">
+                        <!--<div class="about_img">
+                           <figure><img src="images/about_img.png" alt="#"/></figure>
+                        </div>-->
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-7">
+                  <div class="about_right">
+                     <figure><img src={% static "hp/images/about_right.jpg" %} alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- about section -->
+      <div id="we_Do" class="we_do"></div>
+      <div class="col-md-12">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage">
+                  <h2 align="center">What We Do</h2>
+                  <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>-->
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- software section -->
+      <div class="software">
+         <div class="container-fluid">
+            <div class="row d_flex">
+               <div class="col-md-6">
+                  <div class="titlepage">
+                     <h2 id="E-MAIL">E-MAIL</h2>
+                     <p>Sonia provides a platform to use the email service verbally. The user can use verbal communication to compose as well as read mail.  Messages can be created in a user’s voicemail mailbox and then forwarded to another mailbox. All the instructions are made available in Malayalam. To know more about the service say "Instructions".</p>
+                     <!--<a class="read_more" href="#">Click here</a>-->
+                  </div>
+               </div>
+               <div class="col-md-6 padding_right2">
+                  <div class="software_img">
+                     <figure><img src={% static "hp/images/images.png" %} alt="#"/></figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- software section -->
+      <!-- We Do section -->
+      <div id="we_Do" class="we_do">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <!--<div class="titlepage">
+                     <h2>What We Do</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                  </div>-->
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <div id="hover_color" class="we_box">
+                     <!--<span>1</span>-->
+                     <h3 id="Verbal">Verbal Calculator</h3>
+                     <p>Soniaa provides a platform to use the calculator service verbally and in Malayalam. The user can use verbal communication to calculate. Use your voice or the custom keyboard to input calculations and unit conversions easily and quickly. To know more about the service say "Instructions".</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div id="hover_color" class="we_box">
+                     <!--<span>1</span>-->
+                     <h3 id="Ebook">Ebook Reader</h3>
+                     <p>
+                        Ebook platform in Soniaa allows the user to listen to the narration of the books available. These can then be listened to from any electronic device that supports streaming audio, such as a phone, computer, or tablet. To know more about the service say "Instructions".
+                        </p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div id="hover_color" class="we_box">
+                     <!--<span>1</span>-->
+                     <h3 id="Search">Search Engine</h3>
+                     <p>
+                        Soniaa provides a platform to use the search engine in Malayalam. Search engines are able to return results quickly—even with millions of websites online—by scanning the Internet continuously and indexing every page they find. To know more about the service say "Instructions".
+                        </p>
+                  </div>
+               </div>
+               <!--<div class="col-md-12">
+                  <a class="read_more" href="#">Read More</a>
+               </div>-->
+            </div>
+         </div>
+      </div>
+      <!-- end We Do section -->
+      <!-- Our  team section -->
+      <div id="team" class="team">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Our Team</h2>
+                     <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                     </p>-->
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-3">
+                  <div class="team_box">
+                     <figure><img src={% static "hp/images/team_img1.jpg" %} alt="#"/></figure>
+                     <div class="social_box">
+                        <ul class="social_team">
+                           <!--<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
+                           <li><a href="https://twitter.com/s_faba__na?t=OX4tDg1wMLmuy4icPtt96g&s=03"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="https://www.linkedin.com/in/sruthy-suresh-036b2021a/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <h3>Sruthy S Nair</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="team_box">
+                     <figure><img src={% static "hp/images/team_img4.jpg" %} alt="#"/></figure>
+                     <div class="social_box">
+                        <ul class="social_team">
+                           <!--<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
+                           <li><a href="https://mobile.twitter.com/nihana_nizar"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="https://www.linkedin.com/in/nihana-nizar-48a465226/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <h3>Nihana Nizar</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="team_box">
+                     <figure><img src={% static "hp/images/team_img2.jpg" %} alt="#"/></figure>
+                     <div class="social_box">
+                        <ul class="social_team">
+                           <li><a href="https://twitter.com/NibinrajR"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="https://www.linkedin.com/in/nibin10/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                           <li><a href="https://github.com/Nibin10"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <h3>Nibin Raj R</h3>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="team_box">
+                     <figure><img src={% static "hp/images/team_img3.jpg" %} alt="#"/></figure>
+                     <div class="social_box">
+                        <ul class="social_team">
+                           <!--<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>-->
+                           <li><a href="https://twitter.com/parvathyks1910?t=9Ys4nNl5bnJ_nzkI9lc11Q&s=03"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="https://www.linkedin.com/in/parvathyks/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                           <li><a href="https://github.com/parvathy1910"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                        </ul>
+                        <h3>Parvathy KS</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end Our  team section -->
+      
+      <!-- contact section -->
+      <!--
+      <div id="contact" class="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Request  A  Call  Back</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="con_bg">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-md-6">
+                     <form id="request" class="main_form">
+                        <div class="row">
+                           <div class="col-md-12 ">
+                              <input class="contactus" placeholder="Name" type="type" name="Name"> 
+                           </div>
+                           <div class="col-md-12">
+                              <input class="contactus" placeholder="Email" type="type" name="Email"> 
+                           </div>
+                           <div class="col-md-12">
+                              <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">                          
+                           </div>
+                           <div class="col-md-12">
+                              <input class="contactusmess" placeholder="Message" type="type" Message="Name">
+                           </div>
+                           <div class="col-md-12">
+                              <button class="send_btn">Send</button>
+                           </div>
+                           <div class="col-md-12">
+                              <ul class="location_form">
+                                 <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                                    (+71) 1234567890 (+71) 1234567890
+                                 </li>
+                                 <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>demo@gmail.com</li>
+                              </ul>
+                           </div>
+                           <div class="col-md-12">
+                              <ul class="social_icon">
+                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="col-md-6 padding_right2">
+                     <div class="map_section">
+                        <div id="map">
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>-->
+      <!-- end contact section -->
+      <!-- testimonial section -->
+      <div id="testimonial" class="testimonial">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <!--<h2>Testimonials</h2>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>-->
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12">
+                  <div id="myCarousel" class="carousel slide testimonial_Carousel " data-ride="carousel">
+                     <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                     </ol>
+                     <div class="carousel-inner">
+                        <div class="carousel-item active">
+                           <div class="container">
+                              <div class="carousel-caption ">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="testimonial_box">
+                                          <figure><img src={% static "hp/images/our2.jpg" %} alt="#"/></figure>
+                                          <h3>HELEN KELLER<!--<br><span class="blu">Rental</span>--></h3>
+                                          <p>Everything has its wonders, even darkness and silence, and I learn, whatever state I may be in, therein to be content.</p>
+                                          <i><img src={% static "hp/images/test.png" %} alt="#"/></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="testimonial_box">
+                                          <figure><img src={% static "hp/images/our.jpeg" %} alt="#"/></figure>
+                                          <h3>JOSE SARAMAGO</h3>
+                                          <p>Blind people do not need a name , I am my voice , nothing else matters .</p>
+                                          <i><img src={% static "hp/images/test.png" %} alt="#"/></i>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="carousel-item">
+                           <div class="container">
+                              <div class="carousel-caption">
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="full cross_layout">
+                                          <div class="testimonial_box">
+                                             <figure><img src={% static "hp/images/our3.jpg" %} alt="#"/></figure>
+                                             <h3>Louis Braille</span></h3>
+                                             <p>
+
+                                                Access to communication in the widest sense is access to knowledge, and that is vitally important for us if we are not to go on being despised or patronized by condescending sighted people. We do not need pity, nor do we need to be reminded that we are vulnerable. We must be treated as equals — and communication is the way we can bring this about.
+                                                </p>
+                                             <i><img src={% static "hp/images/test.png" %} alt="#"/></i>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                     <i class='fa fa-angle-left'></i>
+                     </a>
+                     <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                     <i class='fa fa-angle-right'></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end testimonial section -->
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-4">
+                     <h3>Services</h3>
+                     <p>
+                     <a href="#E-MAIL"><span style="color: white;">E-MAIL</span></a><br>
+                     <a href="#Verbal"><span style="color: white;">Verbal Calculator</span></a><br>
+                     <a href="#Ebook"><span style="color: white;">Ebook Reader</span></a><br>
+                     <a href="#Search"><span style="color: white;">Search Engine</span></a></p>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="fid_box">
+                        <h3 id="Find">Find us  </h3>
+                        <ul class="location_icon">
+                           <li><a href="https://goo.gl/maps/aaibbiK5htcUfpfo6"><i class="fa fa-map-marker" aria-hidden="true"></i></a><br> It is a long established fact that a <br>reader will be distracted</li>
+                           <li><!--<a href="#">--><i class="fa fa-phone" aria-hidden="true"></i><!--</a>--><br>&nbsp;&nbsp;
+                                (+91) 1234567890<br>&nbsp;&nbsp; (+91) 1234567890
+                           </li>
+                           <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> demo@gmail.com</li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="fid_box">
+                        <h3>News letter</h3>
+                        <form class="news_form">
+                           <input class="letter_form" placeholder=" Email" type="text" name="Email">
+                           <button class="sumbit">Subscribe</button>
+                        </form>
+                        <ul class="social_icon">
+                           <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                           <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p>© 2023 All Rights Reserved. Design by <a href="https://nibin10.github.io">NibiN</a></p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src={% static "hp/js/jquery.min.js" %}></script>
+      <script src={% static "hp/js/popper.min.js" %}></script>
+      <script src={% static "hp/js/bootstrap.bundle.min.js" %}></script>
+      <script src={% static "hp/js/jquery-3.0.0.min.js" %}></script>
+      <!-- sidebar -->
+      <script src={% static "hp/js/jquery.mCustomScrollbar.concat.min.js" %}></script>
+      <script src={% static "hp/js/custom.js" %}></script>
+      <script>
+         function openNav() {
+           document.getElementById("mySidepanel").style.width = "250px";
+         }
+         
+         function closeNav() {
+           document.getElementById("mySidepanel").style.width = "0";
+         }
+      </script>
+      <script>
+         // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+         // Australia.
+         function initMap() {
+           var map = new google.maps.Map(document.getElementById('map'), {
+             zoom: 11,
+             center: {lat: 40.645037, lng: -73.880224},
+             });
+         
+         var image = {% static 'hp/images/maps-and-flags.png' %};
+         var beachMarker = new google.maps.Marker({
+             position: {lat: 40.645037, lng: -73.880224},
+             map: map,
+             icon: image
+           });
+         }
+      </script>
+      <!-- google map js -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+      <!-- end google map js --> 
+   </body>
+</html>
+
+
+

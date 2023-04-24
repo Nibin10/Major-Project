@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Email Validation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href={% static "pass/style.css" %}>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body onmousedown="SendPostRequestOptions(event)">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+  function SendPostRequestOptions(event){
+      $.ajax({
+      url: "{% url 'email' %}",
+      method: 'POST',
+      data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+      success: function (data) {
+        if(data.result == 'inbox'){
+            window.location = "{% url 'inbox' %}";
+        }       
+      }
+  });
+  }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          setInterval(function() {
+            $("#here").load("{% url 'email' %} #here");
+          }, 5000);
+        });
+      </script>
+<!-- partial:index.partial.html -->
+<div class="container" >
+  <div class="top"></div>
+  <div class="bottom"></div>
+  <div class="center">
+    <h2>Please Sign In</h2>
+    <!--<input type="email" placeholder="email"/> -->
+    <div id="here">
+    <input type="text" placeholder="password" value="{{voices}}" required/></div>
+    <h2>&nbsp;</h2>
+  </div>
+</div>
+<audio autoplay  id="myVideo">
+  <source src="/static/images/common.mp3" type="audio/mp3">
+</audio>
+
+<!-- partial -->
+  <script src='https://codepen.io/banik/pen/ReNNrO/3f837b2f0085b5125112fc455941ea94.js'></script>
+</body>
+</html>

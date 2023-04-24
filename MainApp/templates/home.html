@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Home</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content=""> 
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href={% static "homi/css/bootstrap.min.css" %}>
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href={% static "homi/css/style.css"%}>
+<!-- Responsive-->
+<link rel="stylesheet" href={% static "homi/css/responsive.css"%}>
+<!-- fevicon -->
+<link rel="icon" href={% static "homi/images/fevicon.png"%} type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href={% static "homi/css/jquery.mCustomScrollbar.min.css"%}>
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- owl stylesheets --> 
+<link rel="stylesheet" href={% static "homi/css/owl.carousel.min.css"%}>
+<link rel="stylesheet" href={% static "homi/css/owl.theme.default.min.css"%}>
+<link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body onmousedown="SendPostRequestOptions(event)">
+
+  <audio autoplay  id="myVideo">
+    <source src="/static/images/home.mp3" type="audio/mp3">
+  </audio>
+
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+
+      function SendPostRequestOptions(event){
+          $.ajax({
+          url: "{% url 'home' %}",
+          method: 'POST',
+          data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+          success: function (data) {
+
+              
+            
+              if(data.result == 'calculator'){
+                  window.location = "{% url 'calculator' %}";
+              }
+              else if(data.result == 'email'){
+                  window.location = "{% url 'email' %}";
+              }
+              else if(data.result == 'search'){
+                  window.location = "{% url 'search' %}";
+              }
+              else if(data.result == 'book'){
+                  window.location = "{% url 'book' %}";
+              }
+              else if(data.result == 'logout'){
+                  window.location = "{% url 'logout' %}";
+              }
+              else if(data.result == 'home'){
+                  window.location = "{% url 'home' %}";
+              }  
+          }
+      });
+      }
+      </script>
+
+
+    <!-- banner section start -->
+    <div class="banner_section layout_padding" style="margin-bottom: 50px;">
+      <div class="container">
+        <div id="main_slider" class="carousel slide" data-ride="carousel" >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+
+                <div class="col-md-1">
+                  
+                </div>
+                
+                <div class="col-md-4">
+                  
+                  <div class="images_1"><img src={% static "homi/images/person-with-an-opened-email-envelope-inside-a-circle (1).png"%} width="300" height="200" ></div>
+                </div>
+                <div class="col-md-6">
+                  <br>
+                  <br>
+                  <h1 class="Shows_text" style="color: black;">Vmail</h1>
+                  <p class="there_text" style="color: black;">Computer-based system that allows users and subscribers to exchange personal messages</p>
+                  
+                </div>
+                
+              </div>
+            </div>
+            
+            
+          </div>
+          
+        </div>
+          <div class="banner_section_2">
+            <div class="row">
+              <div class="col-lg-4 col-sm-12">
+                <div class="box_main">
+                  <div class="internet_icon"></div>
+                  <h4 class="broadband_text">Audio Book</h4>
+                  <p class="many_text">The recordings of book or other work being read out loud.</p>
+                </div>
+              </div>
+              <div class="col-lg-4 col-sm-12">
+                <div class="box_main">
+                  <div class="internet_icon5"></div>
+                  <h4 class="broadband_text">Search Engine</h4>
+                  <p class="many_text">Program that helps people find the information .</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-4 col-sm-12">
+                <div class="box_main">
+                  <div class="internet_icon2"></div>
+                  <h4 class="broadband_text">Calculator</h4>
+                  <p class="many_text"> User can speak out the numbers or operations with human voice</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+    </div>
+    <!-- banner section end -->
+    <!-- Javascript files-->
+    <script src={% static "homi/js/jquery.min.js"%}></script>
+    <script src={% static "homi/js/popper.min.js"%}></script>
+    <script src={% static "homi/js/bootstrap.bundle.min.js"%}></script>
+    <script src={% static "homi/js/jquery-3.0.0.min.js"%}></script>
+    <script src={% static "js/plugin.js"%}></script>
+    <!-- sidebar -->
+    <script src={% static "homi/js/jquery.mCustomScrollbar.concat.min.js"%}></script>
+    <script src={% static "homi/js/custom.js"%}></script>
+    <!-- javascript --> 
+    <script src={% static "homi/js/owl.carousel.js"%}></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>  
+</body>
+</html>

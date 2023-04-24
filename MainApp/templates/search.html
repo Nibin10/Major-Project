@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+  <link rel="stylesheet" href={% static "ser/search.css" %}>
+
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+  function SendPostRequestOptions(event){
+      $.ajax({
+      url: "{% url 'search' %}",
+      method: 'POST',
+      data: { 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+      success: function (data) {
+        if(data.result == 'home'){
+            window.location = "{% url 'home' %}";
+        }     
+      }
+  });
+  }
+  </script>
+<body onmousedown="SendPostRequestOptions(event)">
+
+<div  class="search__container">
+    <h1 class="search__title">
+        SONIAA
+    </h1>
+    <form action="search.html" method="POST">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          setInterval(function() {
+            $("#here").load("{% url 'search' %} #here");
+          }, 5000);
+        });
+        $(document).ready(function() {
+          setInterval(function() {
+            $("#her").load("{% url 'search' %} #her");
+          }, 5000);
+        });
+      </script>
+    {% csrf_token %}
+    <div id="her">
+    <input class="search__input" type="text" name="infos"  placeholder="എന്താണ് തിരയാൻ ആഗ്രഹിക്കുന്നത്"  required value="{{infos}}">
+      </form></div>
+</div>
+<div class="transbox" id="here"><p>{{iouts}}</p>
+</div>
+
+<audio autoplay  id="myVideo">
+  <source src="/static/images/common.mp3" type="audio/mp3">
+</audio>
+</body>
+</html>
