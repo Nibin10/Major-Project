@@ -99,7 +99,7 @@ import pyttsx3
 def spell_string(string):
     # Initialize Text-to-speech engine
     engine = pyttsx3.init()
-
+    engine.setProperty('rate', 60)
     # Loop through each character in the string and spell it
     for char in string:
         engine.say(char)
@@ -337,7 +337,8 @@ def inbox(request):
             with sr.Microphone() as source:
                 listener.adjust_for_ambient_noise(source)
                 voice=listener.record(source,duration=3)
-                info=listener.recognize_google(voice,language="ml-IN")   
+                info=listener.recognize_google(voice,language="ml-IN")
+                print(info)  
         except:
             pass
                 
@@ -568,7 +569,7 @@ def compose(request):
                         mal.save("common.mp3")
                         playsound("common.mp3")
                         os.remove("common.mp3")
-                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരിയാണ് എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
+                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരി എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
                         mal=gTTS(txt,lang='ml')
                         mal.save("common.mp3")
                         playsound("common.mp3")
@@ -576,7 +577,7 @@ def compose(request):
                         listener.adjust_for_ambient_noise(source)
                         voice=listener.record(source,duration=3)
                         info=listener.recognize_google(voice,language="ml-IN")
-                        if 'ശരിയാണ്' in info:
+                        if 'ശരി' in info:
                             print("success")
                         else:
                             askmsg()
@@ -609,7 +610,7 @@ def compose(request):
                         mal.save("common.mp3")
                         playsound("common.mp3")
                         os.remove("common.mp3")
-                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരിയാണ് എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
+                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരി എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
                         mal=gTTS(txt,lang='ml')
                         mal.save("common.mp3")
                         playsound("common.mp3")
@@ -617,9 +618,10 @@ def compose(request):
                         listener.adjust_for_ambient_noise(source)
                         voice=listener.record(source,duration=3)
                         info=listener.recognize_google(voice,language="ml-IN")
-                        if 'ശരിയാണ്' in info:
+                        if 'ശരി' in info:
                             print("success")
                             askmsg()
+                        
                         else:
                             asksub()
                 except:
@@ -657,10 +659,10 @@ def compose(request):
                         #playsound("common.mp3")
                         #os.remove("common.mp3")
                         toid=convert_special_char(txt)
-                        for k in txt:
-                             talk(k)
-                        #spell_string(txt)
-                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരിയാണ് എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
+                        #for k in txt:
+                        #   talk(k)
+                        spell_string(toid)
+                        txt="സോണിയ പറഞ്ഞത് ശരിയാണെങ്കിൽ ശരി എന്ന്  പറയുക , ശരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന് പറയുക . "
                         mal=gTTS(txt,lang='ml')
                         mal.save("common.mp3")
                         playsound("common.mp3")
@@ -668,9 +670,11 @@ def compose(request):
                         listener.adjust_for_ambient_noise(source)
                         voice=listener.record(source,duration=3)
                         info=listener.recognize_google(voice,language="ml-IN")
-                        if 'ശരിയാണ്' in info:
+                        print(info)
+                        if 'ശരി' in info:
                             print("success")
                             asksub()
+                        
                         else:
                             askmail()
                 except:
@@ -857,7 +861,8 @@ def readmail(request):
         
     print(d)   
     return render(request,'inbox.html',{'d':d,'u':u,'s':s})
-
+global l 
+l=""
 def book(request):
     bookadv=Book.objects.filter(category='Adventure')
     bookrom=Book.objects.filter(category='Romance')
@@ -899,13 +904,18 @@ def book(request):
                         Y="Romance"
                         Z="Fiction"
                         P="Horror"
+                        global l
                         if "അഡ്വഞ്ചർ" in msg:
+                            l=x
                             return x
                         elif "റൊമാൻസ്" in msg:
+                            l=Y
                             return Y
                         elif "ഫിക്ഷൻ" in msg:
+                            l=Z
                             return Z
                         elif "ഹൊറർ" in msg:
+                            l=P
                             return P
                         else:
                             txt="സോണിയയോട് ക്ഷമിക്കണം,"
@@ -925,19 +935,20 @@ def book(request):
                     print("error")
                     askcategory()
             def askbook():
-                #txt="ബുക്കുകളുടെ പേര് ഇനി പറയുന്നതാണ് "
-                #mal=gTTS(txt,lang='ml')
-                #mal.save("common.mp3")
-                #playsound("common.mp3")
-                #os.remove("common.mp3")
-                bookall=Book.objects.all()
-                #for i in bookall:
-                #    txt=str(i.name)+".എഴുതിയത് "+str(i.author)
-                #    mal=gTTS(txt,lang='ml')
-                #    mal.save("common.mp3")
-                #    playsound("common.mp3")
-                #    os.remove("common.mp3")
-                txt="ഏത് ബുക്ക് ആണ് വേണ്ടത് ബുക്കിന്റെ പേര് പറയുക "
+                txt="ബുക്കുകളുടെ പേര് ഇനി പറയുന്നതാണ് "
+                mal=gTTS(txt,lang='ml')
+                mal.save("common.mp3")
+                playsound("common.mp3")
+                os.remove("common.mp3")
+                print(l)
+                bookall=Book.objects.filter(category=l)
+                for i in bookall:
+                    txt=str(i.name)+".എഴുതിയത് "+str(i.author)
+                    mal=gTTS(txt,lang='ml')
+                    mal.save("common.mp3")
+                    playsound("common.mp3")
+                    os.remove("common.mp3")
+                txt="ഏത് ബുക്ക് ആണ് വേണ്ടത് ബുക്കിന്റെ പേര് പറയുക .ഹോം പേജിൽ പോകുന്നതിനായി നിർത്തുക എന്ന് പറയുക "
                 mal=gTTS(txt,lang='ml')
                 mal.save("common.mp3")
                 playsound("common.mp3")
@@ -950,6 +961,8 @@ def book(request):
                         msg=listener.recognize_google(voice,language="ml-IN")
                         msg=str(msg)
                     print(msg)
+                    if 'നിർത്തുക' in msg:
+                        return render(request,'home.html')
                     flag=0
                     for i in bookall:
                         global bookid
@@ -975,7 +988,7 @@ def book(request):
                     os.remove("common.mp3")
                     print("error")
                     askbook()
-            l=askcategory()
+            askcategory()
             askbook()       
         if flag==1:
             return JsonResponse({'result':'bookplay'})
@@ -1065,7 +1078,7 @@ def calculator(request):
                     global a
                     a=para()
                     c=a
-                    txt="താങ്കൾ പറഞ്ഞ നമ്പർ "+str(c)+ "ആണെങ്കിൽ ശരിയാണ് എന്ന് പറയുക ശെരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന്  പറയുക "
+                    txt="താങ്കൾ പറഞ്ഞ നമ്പർ "+str(c)+ "ആണെങ്കിൽ ശരി എന്ന് പറയുക ശെരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന്  പറയുക "
                     mal=gTTS(txt,lang='ml')
                     mal.save("dream.mp3")
                     playsound("dream.mp3")
@@ -1077,8 +1090,9 @@ def calculator(request):
                                     print(info)
                                     a=eval(a) 
                                     a=int(a)
-                                    if "ശരിയാണ്" not in info:
+                                    if "ശരി" not in info:
                                             number()
+                                
                     except:
                             number()
                     
@@ -1093,7 +1107,7 @@ def calculator(request):
                     global b
                     b=para()
                     c=b
-                    txt="താങ്കൾ പറഞ്ഞ നമ്പർ "+str(c)+ "ആണെങ്കിൽ ശരിയാണ് എന്ന് പറയുക ശെരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന്  പറയുക "
+                    txt="താങ്കൾ പറഞ്ഞ നമ്പർ "+str(c)+ "ആണെങ്കിൽ ശരി എന്ന് പറയുക ശെരിയല്ലെങ്കിൽ ശരിയല്ല എന്ന്  പറയുക "
                     mal=gTTS(txt,lang='ml')
                     mal.save("dream.mp3")
                     playsound("dream.mp3")
@@ -1105,9 +1119,10 @@ def calculator(request):
                                     print(info)
                                     b=eval(b) 
                                     b=int(b)
-                                    if "ശരിയാണ്" not in info:
+                                    if "ശരി" not in info:
                                             print("ok")
                                             nxtnumber()
+                                    
                                     
                             
                     except:
@@ -1143,7 +1158,11 @@ def calculator(request):
                     operator()
                     print(result)
                     d=result
-                    txt="ഉത്തരം"+str(d)+" ആണ് .ഉത്തരം"+str(d)+" ആണ് .ഈ നമ്പറിന്റെ കൂടെ ഇനീം എന്തേലും ആഡ് ചെയ്യണോ ചെയ്യണമെങ്കിൽ വേണം എന്ന് പറയുക അല്ലെങ്കിൽ വേണ്ട എന്ന് പറയുക  "
+                    if d>0 :
+                        txt="ഉത്തരം"+str(d)+" ആണ് .ഉത്തരം"+str(d)+" ആണ് .ഈ നമ്പറിന്റെ കൂടെ ഇനീം എന്തേലും ആഡ് ചെയ്യണോ ചെയ്യണമെങ്കിൽ വേണം എന്ന് പറയുക അല്ലെങ്കിൽ വേണ്ട എന്ന് പറയുക  "
+                    else:
+                        txt="ഉത്തരം മൈനസ്"+str(d)+" ആണ് . ഉത്തരം മൈനസ്"+str(d)+" ആണ് .ഈ നമ്പറിന്റെ കൂടെ ഇനീം എന്തേലും ആഡ് ചെയ്യണോ ചെയ്യണമെങ്കിൽ വേണം എന്ന് പറയുക അല്ലെങ്കിൽ വേണ്ട എന്ന് പറയുക  "
+
                     mal=gTTS(txt,lang='ml')
                     mal.save("dream.mp3")
                     playsound("dream.mp3")
